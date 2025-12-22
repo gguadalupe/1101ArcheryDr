@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>1101 Archery Dr · Fort Washington, MD</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --card: #161a1f;
+      --border: rgba(255, 255, 255, 0.06);
+      --text: #e8eaed;
+      --muted: #b6bcc9;
+      --accent: #d83d27;
+      --shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(180deg, #0f1115 0%, #0f1115 55%, #0c0d10 100%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 20px 18px 72px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: 22px;
+      background: #0c0d10;
+      box-shadow: var(--shadow);
+      isolation: isolate;
+    }
+
+    .hero img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+      filter: saturate(1.02);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0) 100%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 18px;
+      gap: 8px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 6vw, 34px);
+      letter-spacing: 0.4px;
+      text-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    }
+
+    .location {
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(15px, 4vw, 18px);
+      text-shadow: 0 8px 24px rgba(0, 0, 0, 0.65);
+    }
+
+    .badge {
+      align-self: flex-start;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(216, 61, 39, 0.15);
+      border: 1px solid rgba(216, 61, 39, 0.35);
+      color: #ffb4a6;
+      font-size: 13px;
+      letter-spacing: 0.3px;
+    }
+
+    section {
+      background: var(--card);
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      padding: 18px;
+      margin-top: 16px;
+      box-shadow: 0 18px 32px rgba(0, 0, 0, 0.24);
+    }
+
+    section h2 {
+      margin: 0 0 10px;
+      font-size: clamp(20px, 5vw, 24px);
+      letter-spacing: 0.3px;
+    }
+
+    section p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .list {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .list li {
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 15px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .list li::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+      box-shadow: 0 0 0 5px rgba(216, 61, 39, 0.12);
+    }
+
+    .gallery {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      margin-top: 6px;
+    }
+
+    .gallery figure {
+      margin: 0;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #0d0f14;
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      min-height: 160px;
+      transition: transform 180ms ease;
+    }
+
+    .gallery figure:hover img {
+      transform: scale(1.02);
+    }
+
+    @media (min-width: 720px) {
+      .hero img { height: 320px; }
+      .page { padding: 32px 28px 96px; }
+      section { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <img src="content/image007.jpg" alt="Front view of 1101 Archery Dr" loading="eager">
+      <div class="hero-content">
+        <h1>1101 Archery Dr.</h1>
+        <p class="location">Fort Washington, MD 20744</p>
+      </div>
+    </header>
+
+    <section>
+      <h2>Welcome</h2>
+      <p>We are the Guadalupe-Sueiro family. We're relocating for work and need to sell our forever home. Take a look at how we've cared for and refreshed it.</p>
+      <p>Please enjoy a few "before" photos below.</p>
+    </section>
+
+    <section>
+      <h2>Professional Updates</h2>
+      <p>Every major project was handled by pros. Recent upgrades include:</p>
+      <ul class="list">
+        <li>New electrical panel</li>
+        <li>EV charger</li>
+        <li>New gable fan</li>
+        <li>New HVAC unit (96% efficiency)</li>
+        <li>Primary bath gut and remodel</li>
+        <li>Half bath remodel</li>
+        <li>Laundry room plumbing</li>
+        <li>Radon fan installation</li>
+        <li>New first-floor red oak flooring</li>
+        <li>Second floor refinished</li>
+        <li>New light fixtures in kitchen, dining room, and primary bedroom</li>
+        <li>New fans in family room</li>
+        <li>Wired internet connections in primary bedroom and office</li>
+        <li>New power outlets and light switches</li>
+        <li>New black square door handles, including front door</li>
+        <li>New blinds in dining room and living room</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Gallery</h2>
+      <p>Swipe through on mobile to see the spaces. These are a mix of the "before" shots.</p>
+      <div class="gallery">
+        <figure><img src="content/image011.png" alt="Exterior and yard" loading="lazy"></figure>
+        <figure><img src="content/image015.png" alt="Interior overview" loading="lazy"></figure>
+        <figure><img src="content/image017.jpg" alt="Living area" loading="lazy"></figure>
+        <figure><img src="content/image019.jpg" alt="Kitchen and dining" loading="lazy"></figure>
+        <figure><img src="content/image023.jpg" alt="Bedroom view" loading="lazy"></figure>
+        <figure><img src="content/image025.jpg" alt="Bathroom update" loading="lazy"></figure>
+        <figure><img src="content/image026.jpg" alt="Staircase and landing" loading="lazy"></figure>
+        <figure><img src="content/image028.jpg" alt="Hallway detail" loading="lazy"></figure>
+        <figure><img src="content/image029.jpg" alt="Family room" loading="lazy"></figure>
+        <figure><img src="content/image030.jpg" alt="Second living space" loading="lazy"></figure>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
