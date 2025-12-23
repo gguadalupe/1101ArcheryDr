@@ -53,7 +53,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0) 100%);
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.068) 0%, rgba(0, 0, 0, 0) 100%, rgba(0, 0, 0, 0.9) 100%);
       pointer-events: none;
     }
 
@@ -157,6 +157,7 @@
       background: #0d0f14;
       border: 1px solid var(--border);
       box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+      cursor: pointer;
     }
 
     .gallery img {
@@ -170,6 +171,109 @@
 
     .gallery figure:hover img {
       transform: scale(1.02);
+    }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      display: none;
+      background: rgba(0, 0, 0, 0.82);
+      backdrop-filter: blur(4px);
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      padding: 18px;
+    }
+
+    .lightbox.open { display: flex; }
+
+    .lightbox__inner {
+      position: relative;
+      max-width: 1100px;
+      width: min(96vw, 1100px);
+      height: min(80vh, 720px);
+      background: #0c0d10;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 12px 12px 14px;
+    }
+
+    .lightbox__imgwrap {
+      position: relative;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #050607;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .lightbox__imgwrap img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      display: block;
+      border-radius: 10px;
+    }
+
+    .lightbox__caption {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.5;
+      padding: 0 4px;
+      min-height: 22px;
+      text-align: center;
+    }
+
+    .lightbox__controls {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      pointer-events: none;
+    }
+
+    .lightbox__btn {
+      pointer-events: auto;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(0, 0, 0, 0.55);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: transform 120ms ease, background 120ms ease, border 120ms ease;
+    }
+
+    .lightbox__btn:hover { transform: translateY(-2px); background: rgba(0, 0, 0, 0.7); }
+    .lightbox__btn:active { transform: translateY(0); }
+
+    .lightbox__close {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 38px;
+      height: 38px;
+      z-index: 3;
+      background: rgba(0, 0, 0, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+    }
+
+    @media (max-width: 520px) {
+      .lightbox__btn { width: 38px; height: 38px; }
+      .lightbox__caption { font-size: 14px; }
     }
 
     @media (min-width: 720px) {
@@ -222,18 +326,85 @@
       <h2>Gallery</h2>
       <p>Swipe through on mobile to see the spaces. These are a mix of the "before" shots.</p>
       <div class="gallery">
-        <figure><img src="content/image011.png" alt="Exterior and yard" loading="lazy"></figure>
-        <figure><img src="content/image015.png" alt="Interior overview" loading="lazy"></figure>
-        <figure><img src="content/image017.jpg" alt="Living area" loading="lazy"></figure>
-        <figure><img src="content/image019.jpg" alt="Kitchen and dining" loading="lazy"></figure>
-        <figure><img src="content/image023.jpg" alt="Bedroom view" loading="lazy"></figure>
-        <figure><img src="content/image025.jpg" alt="Bathroom update" loading="lazy"></figure>
-        <figure><img src="content/image026.jpg" alt="Staircase and landing" loading="lazy"></figure>
-        <figure><img src="content/image028.jpg" alt="Hallway detail" loading="lazy"></figure>
-        <figure><img src="content/image029.jpg" alt="Family room" loading="lazy"></figure>
-        <figure><img src="content/image030.jpg" alt="Second living space" loading="lazy"></figure>
+        <figure><img src="content/image011.png" alt="Half-bathroom first floor" loading="lazy"></figure>
+        <figure><img src="content/image015.png" alt="Dining room floor replacement" loading="lazy"></figure>
+        <figure><img src="content/image017.jpg" alt="Living area floor replacement" loading="lazy"></figure>
+        <figure><img src="content/image019.jpg" alt="Master bedroom" loading="lazy"></figure>
+        <figure><img src="content/image023.jpg" alt="Living room before floor replacement" loading="lazy"></figure>
+        <figure><img src="content/image025.jpg" alt="Front door before refunish" loading="lazy"></figure>
+        <figure><img src="content/image026.jpg" alt="Old electrical panel" loading="lazy"></figure>
+        <figure><img src="content/image028.jpg" alt="Staircase in process" loading="lazy"></figure>
+        <figure><img src="content/image029.jpg" alt="Old AC unit" loading="lazy"></figure>
+        <figure><img src="content/image030.jpg" alt="Master bedroom before" loading="lazy"></figure>
       </div>
     </section>
   </main>
+
+  <div class="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <div class="lightbox__inner">
+      <button class="lightbox__btn lightbox__close" aria-label="Close viewer">X</button>
+      <div class="lightbox__imgwrap">
+        <img id="lightbox-img" src="" alt="">
+        <div class="lightbox__controls">
+          <button class="lightbox__btn lightbox__prev" aria-label="Previous image">&#60;</button>
+          <button class="lightbox__btn lightbox__next" aria-label="Next image">&#62;</button>
+        </div>
+      </div>
+      <div class="lightbox__caption" id="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const figures = Array.from(document.querySelectorAll('.gallery figure'));
+      if (!figures.length) return;
+
+      const lightbox = document.querySelector('.lightbox');
+      const imgEl = document.getElementById('lightbox-img');
+      const captionEl = document.getElementById('lightbox-caption');
+      const btnPrev = document.querySelector('.lightbox__prev');
+      const btnNext = document.querySelector('.lightbox__next');
+      const btnClose = document.querySelector('.lightbox__close');
+      let current = 0;
+
+      const show = (index) => {
+        current = index;
+        const img = figures[current].querySelector('img');
+        imgEl.src = img.src;
+        imgEl.alt = img.alt || '';
+        captionEl.textContent = img.alt || 'Photo';
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      };
+
+      const close = () => {
+        lightbox.classList.remove('open');
+        document.body.style.overflow = '';
+      };
+
+      const next = () => show((current + 1) % figures.length);
+      const prev = () => show((current - 1 + figures.length) % figures.length);
+
+      figures.forEach((fig, idx) => {
+        fig.addEventListener('click', () => show(idx));
+      });
+
+      btnNext.addEventListener('click', (e) => { e.stopPropagation(); next(); });
+      btnPrev.addEventListener('click', (e) => { e.stopPropagation(); prev(); });
+      btnClose.addEventListener('click', (e) => { e.stopPropagation(); close(); });
+
+      lightbox.addEventListener('click', (e) => {
+        const inside = e.target.closest('.lightbox__inner');
+        if (!inside) close();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('open')) return;
+        if (e.key === 'Escape') close();
+        if (e.key === 'ArrowRight') next();
+        if (e.key === 'ArrowLeft') prev();
+      });
+    })();
+  </script>
 </body>
 </html>
